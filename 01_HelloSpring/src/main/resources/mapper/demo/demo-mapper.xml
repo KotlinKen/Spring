@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo">
+
+	<insert id="insertDev" useGeneratedKeys="true">
+		INSERT INTO DEV VALUES(SEQ_DEVNO.NEXTVAL, #{devName}, #{devAge}, #{devEmail}, #{devLang, typeHandler=com.kh.spring.demo.model.typehandler.DevLangTypeHandler})
+	</insert>
+	<select resultMap="devMap" id="selectDevList">
+		SELECT * FROM DEV
+	</select>
+	
+	<resultMap type="dev" id="devMap">
+		<result column="devLang" property="devLang" typeHandler="com.kh.spring.demo.model.typehandler.DevLangTypeHandler"/>
+	</resultMap>
+</mapper>
