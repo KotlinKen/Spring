@@ -19,7 +19,6 @@ public class DemoServiceImpl implements DemoService {
 	@Override
 	public int insertDev(Dev dev) {
 		return demoDAO.insertDev(dev);
-		
 	}
 
 	@Override

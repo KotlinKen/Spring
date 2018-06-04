@@ -76,23 +76,23 @@ background:#333; color:#fff; display:block; padding:10px; width:200px; float:lef
 
 
 
-
+<%  %>
 <script>
 	function demo1(){
-		$("#devFrm").attr("action", "${pageContext.request.contextPath}/demo/demo1.do");
+		$("#devFrm").attr("action", "${rootPath }/demo/demo1.do");
 		$("#devFrm").submit();
 	}
 	
 	function demo2(){
-		$("#devFrm").attr("action", "${pageContext.request.contextPath}/demo/demo2.do");
+		$("#devFrm").attr("action", "${rootPath }/demo/demo2.do");
 		$("#devFrm").submit();
 	}
 	function demo3(){
-		$("#devFrm").attr("action", "${pageContext.request.contextPath}/demo/demo3.do");
+		$("#devFrm").attr("action", "${rootPath }/demo/demo3.do");
 		$("#devFrm").submit();
 	}
 	function insertDev(){
-		$("#devFrm").attr("action", "${pageContext.request.contextPath}/demo/insertDev.do");
+		$("#devFrm").attr("action", "${rootPath }/demo/insertDev.do");
 		$("#devFrm").attr("method", "post");
 		$("#devFrm").submit();
 	}
