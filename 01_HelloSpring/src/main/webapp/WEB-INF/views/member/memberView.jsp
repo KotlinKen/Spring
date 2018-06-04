@@ -12,7 +12,7 @@ margin:0 auto;
 text-align:center;
 }
 </style>
-
+test subs
 <div id="enroll-container">
 	<form action="${rootPath}/member/memberUpdate.do" method="POST">
 		<input type="text" class="form-control" name="userId" id="userId_" placeholder="아이디" value="${m.userId }" required readonly="readonly"/>
