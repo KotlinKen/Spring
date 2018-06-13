@@ -1,0 +1,7 @@
+DEBUG:[2018-06-11 16:00:30] MemberController.java : 156 -------------- [로그아웃 페이지] 로그아웃 페이지
+DEBUG:[2018-06-11 16:00:34] MemberController.java : 116 -------------- [회원로그인 요청 페이지] 회원로그인 요청 페이지
+DEBUG:[2018-06-11 16:04:56] MemberController.java : 116 -------------- [회원로그인 요청 페이지] 회원로그인 요청 페이지
+DEBUG:[2018-06-11 16:08:29] MemberController.java : 156 -------------- [로그아웃 페이지] 로그아웃 페이지
+DEBUG:[2018-06-11 16:08:33] MemberController.java : 116 -------------- [회원로그인 요청 페이지] 회원로그인 요청 페이지
+INFO :[2018-06-11 16:23:31] LoggerAspect.java : 40 -------------- [testMember [userId=powerman, password=$2a$10$TODK6Z450o9LYBFZ62csUuqmjQbyxR09YsHnjTl.pVpo41pMvfKSe, userName=김률민, gender=M, age=35, email=a@nate.com, phone=3333333    , address=addresss, hobby=[여행], enrollDate=2018-06-04]] testMember [userId=powerman, password=$2a$10$TODK6Z450o9LYBFZ62csUuqmjQbyxR09YsHnjTl.pVpo41pMvfKSe, userName=김률민, gender=M, age=35, email=a@nate.com, phone=3333333    , address=addresss, hobby=[여행], enrollDate=2018-06-04]
+INFO :[2018-06-11 16:23:31] LoggerAspect.java : 42 -------------- [powerman1111111111111111111111111] powerman1111111111111111111111111
