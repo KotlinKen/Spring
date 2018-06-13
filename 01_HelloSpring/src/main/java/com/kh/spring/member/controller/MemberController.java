@@ -1,6 +1,9 @@
 package com.kh.spring.member.controller;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.MDC;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +23,8 @@ import com.kh.spring.member.model.vo.Member;
 @Controller
 public class MemberController {
 	
+	private Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Autowired
 	MemberService memberService;
 	
@@ -31,11 +36,18 @@ public class MemberController {
 	
 	@RequestMapping("/member/memberEnroll.do")
 	public String memberEnroll() {
+		if(logger.isDebugEnabled()) {
+		logger.debug("회원등록 페이지");
+		}
 		return "member/memberEnroll";
 	}
 	
 	@RequestMapping(value = "/member/memberEnrollEnd.do", method=RequestMethod.POST)
 	public String memberEnrollEnd(Model model, Member m) {
+		if(logger.isDebugEnabled()) {
+			/*logger.debug("회원등록 처리 페이지");*/
+		}
+		logger.debug(m.toString());
 		System.out.println(m);
 		System.out.println(m.getAge());
 		String rawPassword = m.getPassword();
@@ -97,13 +109,17 @@ public class MemberController {
 	
 	
 	@RequestMapping("/member/memberLogin.do")
-	public ModelAndView memberLogin(@RequestParam String userId, @RequestParam String password) {
+	public ModelAndView memberLogin(@RequestParam String userId, @RequestParam String password, HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
+		if(logger.isDebugEnabled()) {
+			//logger.debug("회원로그인 요청 페이지");
+		}
 		
-		
+
 		
 		Member m = memberService.selectMemberOne(userId);
+
 		
 		String msg = "";
 		String loc = "/";
@@ -116,6 +132,7 @@ public class MemberController {
 				//기존 세션처리
 				//session.setAttribute("memberLoggedIn", m);
 				mav.addObject("memberLoggedIn", m);
+				session.setAttribute("memberLoggedIn", m);
 			}else {
 				msg = "비밀번호가 틀렸습니다."; 
 			}
@@ -126,7 +143,8 @@ public class MemberController {
 		//뷰단 지정
 		//redirect:/
 		mav.setViewName("common/msg");
-		
+		MDC.put("USERID", m.getUserId());
+		//logger.debug(m.getUserId()+"로그인 함."); 
 		return mav;
 	}
 	
@@ -134,7 +152,9 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/memberLogout.do")
 	public String memberLogout(Model model, SessionStatus sessionStatus) {
-		
+		if(logger.isDebugEnabled()) {
+			logger.debug("로그아웃 페이지");
+		}
 		String msg = "";
 		String loc = "/";
 		
@@ -154,7 +174,13 @@ public class MemberController {
 	
 	@RequestMapping("/member/memberView.do")
 	public ModelAndView memberView(@RequestParam String userId) {
+		
+		if(logger.isDebugEnabled()) {
+			logger.debug("[" + userId +"]"+"회원 정보 보기 페이지");
+		}
 		ModelAndView mav = new ModelAndView();
+		System.out.println("test");
+		System.out.println("44444444");
 		Member m = memberService.selectMemberOne(userId);
 		mav.addObject("m", m);
 		mav.setViewName("member/memberView");
@@ -164,6 +190,11 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/memberUpdate.do", method=RequestMethod.POST)
 	public ModelAndView memberUpdate(Member m) {
+		
+		if(logger.isDebugEnabled()) {
+			logger.debug(m.toString()+"회원 업데이트 처리");
+		}
+		
 		System.out.println(m);
 		ModelAndView mav = new ModelAndView();
 		String msg = "";

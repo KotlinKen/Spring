@@ -4,9 +4,11 @@
 
 	<img src="${pageContext.request.contextPath }/resources/images/logo-spring.png" id="center-image" alt="스프링로고" />
 	<c:forEach var="i" begin="1" end="6" varStatus="status">
-		<h${i }> 익순이 발가락 개수${i }</h${i }>
+		<h${i }> 김률민 페이지 ${i }</h${i }>
 		<c:if test="${status.last}">
-		6개 응?
+		
+		6번째는 
+		
 		</c:if>
 	</c:forEach>
 	${rootPath }

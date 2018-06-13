@@ -21,7 +21,7 @@ text-align:center;
 		<br />
       	<input type="text" class="form-control" name="userName" id="userName" placeholder="이름" required/>
 		<br />
-		<input type="number" class="form-control" name="userAge" id="userAge" placeholder="나이" />
+		<input type="number" class="form-control" name="age" id="userAge" placeholder="나이" />
 		<br />
 		<input type="email" class="form-control" name="email" id="email" placeholder="이메일"  />
 		<br />

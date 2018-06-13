@@ -12,7 +12,7 @@
 	}else{
 		
 	}
-		location.href="${rootPath}/";
+		location.href="${rootPath}${loc}";
 </script>
 
 
