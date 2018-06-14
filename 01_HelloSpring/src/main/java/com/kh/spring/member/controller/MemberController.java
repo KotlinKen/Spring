@@ -1,4 +1,8 @@
 package com.kh.spring.member.controller;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.MDC;
@@ -12,10 +16,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
 
@@ -210,6 +217,103 @@ public class MemberController {
 		mav.setViewName("common/msg");
 		return mav;
 	}
+	
+	/******************* Spring Ajax 시작 ******************/
+	   /**
+	    * 1. Stream을 이용한 ajax처리
+	    */
+/*	   @RequestMapping("/member/checkIdDuplicate.do")
+	   public void checkIdDuplicate(@RequestParam String userId, HttpServletResponse response) throws IOException {
+	      logger.debug("stream ajax : "+userId);
+	      int count = memberService.checkIdDuplicate(userId);
+	      boolean isUsable = count==0?true:false;
+	      
+	      response.getWriter().print(isUsable);
+	      
+	      
+	   }*/
+	   
+	   
+	   
+	   
+	   /******************* Spring Ajax 끝 ******************/
+	
+	
+	/**
+	 * 2.jsonView
+	 */
+	
+	
+/*	   @RequestMapping("/member/checkIdDuplicate.do")
+	   public ModelAndView checkIdDuplicate(@RequestParam String userId) throws IOException {
+	      logger.debug("jsonView ajax : "+userId);
+	      ModelAndView mav = new ModelAndView();
+	      Map<String, Object> map = new HashMap<>();
+	      //업무로직
+	      int count = memberService.checkIdDuplicate(userId);
+	      boolean isUsable = count==0?true:false;
+	      
+	      map.put("isUsable", isUsable);
+	      mav.addAllObjects(map);
+	      //(중요) jsonView빈으로 연결됨
+	      mav.setViewName("jsonView");
+	      
+	      return mav; 
+	   }
+	
+	*/
+	
+	
+	
+/*	   @RequestMapping("/member/checkIdDuplicate.do")
+	   @ResponseBody
+	   public String checkIdDuplicate(@RequestParam(value="userId") String userId) throws JsonProcessingException {
+	      logger.debug("@ResponseBody-jsonString ajax : "+userId);
+
+	      Map<String, Object> map = new HashMap<>();
+	      
+	      //jackson 라이브러리에서 사용하는 바인더 
+	      ObjectMapper mapper = new ObjectMapper();
+	      String jsonStr = null;
+	      
+	      
+	      //업무로직
+	      int count = memberService.checkIdDuplicate(userId);
+	      boolean isUsable = count==0?true:false;
+	      
+	      //jsonString 변환 
+	      map.put("isUsable", isUsable);
+	      jsonStr = mapper.writeValueAsString(map);
+	      return jsonStr; 
+	   }*/
+	   
+	/**
+	 *  4.@ResponseBody를 이용해서 일반 자바객체 리턴하기
+	 * 
+	 * 
+	 */
+	   
+	
+	
+	
+	   @RequestMapping("/member/checkIdDuplicate.do")
+	   @ResponseBody
+	   public Map<String, Object> checkIdDuplicate(@RequestParam(value="userId") String userId) throws JsonProcessingException {
+	      logger.debug("@ResponseBody-java Object ajax : "+userId);
+	      Map<String, Object> map = new HashMap<>();
+	      
+	      //업무로직
+	      int count = memberService.checkIdDuplicate(userId);
+	      boolean isUsable = count==0?true:false;
+	      
+	      
+	      //jsonString 변환 
+	      map.put("isUsable", isUsable);
+	      
+	      
+	      return map; 
+	   }
+	   
 	
 	
 }

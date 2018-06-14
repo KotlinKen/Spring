@@ -52,9 +52,8 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 		if(logger.isDebugEnabled()) {
 			//logger.debug(request.getRequestURI());
 			HttpSession session = request.getSession();
-			Member m = (Member)session.getAttribute("memberLoggedIn");
-			MDC.put("USERID", m.getUserId());
-			logger.debug(m.getUserId());
+/*			Member m = (Member)session.getAttribute("memberLoggedIn");
+			logger.debug(m.getUserId());*/
 			//logger.debug("============= [afterComletion END] ============= ");
 		}
 		super.afterCompletion(request, response, handler, ex);

@@ -10,11 +10,14 @@
 		UPDATE MEMBER SET USERNAME= #{userName}, GENDER = #{gender}, AGE= #{age}, EMAIL = #{email}, PHONE = #{phone}, address = #{address}, hobby = #{hobby, typeHandler=strArrTypeHandler} WHERE USERID=#{userId}
 	</update>
 	
-	
-	
 	<select resultMap="memberMap" id="selectMemberOne">
 		SELECT * FROM MEMBER WHERE USERID = #{userId}
 	</select>
+	
+	<select resultType="_int" id="checkIdDuplicate">
+		SELECT COUNT(*) FROM MEMBER WHERE USERID = #{userId}
+	</select>
+	
 	
 	<resultMap type="member" id="memberMap">
 		<result column="hobby" property="hobby" typeHandler="strArrTypeHandler"/>

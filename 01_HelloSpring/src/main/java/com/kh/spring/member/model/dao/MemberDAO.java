@@ -10,4 +10,6 @@ public interface MemberDAO {
 
 	int updateMember(Member m);
 
+	int checkIdDuplicate(String userId);
+
 }

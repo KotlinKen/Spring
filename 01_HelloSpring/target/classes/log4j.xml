@@ -149,7 +149,7 @@
 	</logger>
 	<!-- Root Logger -->
 	<root>
-		<priority value="WARN" />
+		<priority value="debug" />
  		<appender-ref ref="console2" />
  		<appender-ref ref="fileLogger" />
 	</root>
