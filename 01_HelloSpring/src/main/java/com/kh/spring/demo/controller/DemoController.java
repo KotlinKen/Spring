@@ -35,7 +35,7 @@ public class DemoController {
 	
 	@RequestMapping("/demo/demo.do")
 	public String demo() {
-		System.out.println("/demo/demo.do가 호출됨! 이건 내가 쓴거");
+		System.out.println("/demo/demo.do가 호출됨! test2 이건 내가 쓴거");
 		return "demo/demo";
 	}
 	
