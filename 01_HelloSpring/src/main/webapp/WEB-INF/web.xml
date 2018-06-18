@@ -54,8 +54,6 @@
   	<exception-type>java.lang.Exception</exception-type>
     <location>/WEB-INF/views/common/error.jsp</location>
   </error-page>	
-  	
-  	
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>

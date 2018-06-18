@@ -1,4 +1,5 @@
-﻿<jsp:include page ="/WEB-INF/views/common/header.jsp">
+﻿
+<jsp:include page ="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="Hello Spring!" name="pageTitle"/>
 </jsp:include>
 

@@ -82,7 +82,7 @@ public class BoardController {
 		try {
 			//1.파일업로드 처리
 			String saveDirectory = request.getSession().getServletContext().getRealPath("/resources/upload/board");
-					
+					logger.info("test"+saveDirectory);
 			List<Attachment> attachList = new ArrayList<>();
 			/************** MultipartFile을 이용한 파일 업로드 처리 로직 시작  ********************************************************/
 			
